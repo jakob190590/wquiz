@@ -44,6 +44,7 @@ class Question
     private $email = '';
     private $created = '0000-00-00';
     private $reviewed = '0000-00-00';
+    private $optionsShuffled = true;
     // This is an array of quizzes that question is included in (usuing quizname rather than id)
     private $quizzes = array();
     
@@ -321,6 +322,8 @@ class Question
     		case 'checkbox':
     			$formatted .= "<ul>\n";
     			$options = $this->getOptions();
+    			if ($this->optionsShuffled)
+    				shuffle($options);
     			for ($i=0; $i<count($options); $i++)
     			{
     				$formatted .= "<li>$i</li>\n";
@@ -349,7 +352,10 @@ class Question
     	//print "Form button answer is $answer \n";
     	$form_string = "<input type=\"hidden\" name=\"type\" value=\"radio\">\n";
     	$options = $this->getOptions();
-    	for ($i=0; $i<count($options); $i++)
+    	$indexes = range(0, count($options) - 1);
+    	if ($this->optionsShuffled)
+    		shuffle($indexes);
+    	foreach ($indexes as $i)
     	{
     		$form_string .= "<label><input type=\"radio\" name=\"answer\" value=\"$i\" ";
     		if ($i == $answer) {$form_string.= "checked=\"checked\" ";}
@@ -385,7 +391,10 @@ class Question
     	if ($answer == -1) {$answer = '';}
     	$form_string = "<input type=\"hidden\" name=\"type\" value=\"checkbox\">\n";
     	$options = $this->getOptions();
-    	for ($i=0; $i<count($options); $i++)
+    	$indexes = range(0, count($options) - 1);
+    	if ($this->optionsShuffled)
+    		shuffle($indexes);
+    	foreach ($indexes as $i)
     	{
     		$form_string .= "<label><input type=\"checkbox\" name=\"answer-$i\" ";
     		// make int into a string so that it can be used in strpos search

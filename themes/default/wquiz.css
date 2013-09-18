@@ -1,0 +1,149 @@
+/** CSS file for wQuiz default theme **/
+
+/* default theme */
+#wquiz-footer
+{
+	margin-top: 60px;
+}
+
+
+p.wquiz-end-notanswered 
+{
+	font-weight: bold;
+}
+
+
+#wquiz-results-button
+{
+	margin-bottom: 20px;
+}
+
+/* Clear after showing results - remove columns if on summary page */
+#wquiz-results-end
+{
+	clear: both;
+	height: 20px;
+}
+
+/* css.php */
+img.wquiz-questionimage
+{
+	float:right;
+	margin: 20px;
+}
+
+/* split results into columns */
+/* this is over 3 times li so allows for 3 columns */
+#wquiz-results
+{
+	width: 35em;
+}
+#wquiz-results li
+{
+	float: left;
+	width: 10em;
+}
+
+#wquiz-results a
+{
+	text-decoration: none;
+}
+
+/* included in default settings - div for review answers? */
+#wquiz-end-review-div
+{
+	background-color: #e0eaf8;
+	padding: 10px;
+	width: 600px;
+}
+
+/* Colour for answer / not answer / correct */
+.wquiz-summary-correct a
+{
+	color: #003300;
+}
+
+.wquiz-summary-incorrect a
+{
+	color: #990000;
+}
+
+.wquiz-summary-notanswered a
+{
+	color: #ff6600;
+}
+
+
+/* Admin pages */
+
+/* css.php */
+#wquiz-admin-menu a 
+{
+	padding: 5px;
+	background: #b7c5f4;
+	text-decoration: none;	
+	font-family: sans-serif;
+	color: white;
+}
+
+/* css.php */
+#wquiz-admin-main a 
+{
+	text-decoration: none;
+	color: blue;
+}
+
+/* css.php */
+table.wquiz-admin-table 
+{
+	margin-top: 20px;
+}
+
+/* css.php */
+table.wquiz-admin-table td 
+{
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+/* css.php */
+table.wquiz-admin-table th 
+{
+	padding-left: 5px;
+	padding-right: 5px;
+	text-align: left;
+}
+
+/* css.php */
+p.wquiz-admin-edit-message 
+{
+	font-weight: bold;
+	
+}
+
+/* css.php */
+span.wquiz-offline-question-answer 
+{
+	text-decoration: underline;
+}
+
+
+/* default theme */
+#wquiz-adminfooter
+{
+	margin-top: 60px;
+}
+
+/* default theme */
+p.wquiz-createdby
+{
+	font-size: small;
+}
+
+/* default theme */
+p.wquiz-createdby a 
+{
+	text-decoration: none;
+}
+
+

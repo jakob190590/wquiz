@@ -320,7 +320,7 @@ class Question
     		case 'radio':  	
     		case 'checkbox':
     			$formatted .= "<ul>\n";
-    			$options = explode (",", $this->input);
+    			$options = $this->getOptions();
     			for ($i=0; $i<count($options); $i++)
     			{
     				$formatted .= "<li>$i</li>\n";
@@ -344,15 +344,11 @@ class Question
     	return $formatted;
     }
 
-    
-    
     private function createFormRadio ($answer)
     {
     	//print "Form button answer is $answer \n";
     	$form_string = "<input type=\"hidden\" name=\"type\" value=\"radio\">\n";
-    	// if we have , followed by a new line / space etc. remove the space character
-    	$options = preg_replace ('/,\s/', ',', $this->input);
-    	$options = explode (",", $options);
+    	$options = $this->getOptions();
     	for ($i=0; $i<count($options); $i++)
     	{
     		$form_string .= "<label><input type=\"radio\" name=\"answer\" value=\"$i\" ";
@@ -361,7 +357,7 @@ class Question
     	}
     	return $form_string;
     }
-    
+
     // note $labels must be ,, if empty
     private function createFormText ($answer)
     {
@@ -388,9 +384,7 @@ class Question
     	// if answer is -1 set to '' so does not match
     	if ($answer == -1) {$answer = '';}
     	$form_string = "<input type=\"hidden\" name=\"type\" value=\"checkbox\">\n";
-    	// if we have , followed by a new line / space etc. remove the space character
-    	$options = preg_replace ('/,\s/', ',', $this->input);
-    	$options = explode (",", $options);
+    	$options = $this->getOptions();
     	for ($i=0; $i<count($options); $i++)
     	{
     		$form_string .= "<label><input type=\"checkbox\" name=\"answer-$i\" ";
@@ -404,6 +398,13 @@ class Question
     	return $form_string;
     }
 
+    private function getOptions()
+    {
+    	// if we have , followed by a new line / space etc. remove the space character
+    	$options = preg_replace ('/,\s/', ',', $this->input);
+    	$options = explode (",", $options);
+    	return $options;
+    }
     
     // checks to see if an answer is correct or incorrect
     // returns true (correct) or false

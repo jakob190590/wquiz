@@ -355,9 +355,9 @@ class Question
     	$options = explode (",", $options);
     	for ($i=0; $i<count($options); $i++)
     	{
-    		$form_string .= "<input type=\"radio\" name=\"answer\" value=\"$i\" ";
+    		$form_string .= "<label><input type=\"radio\" name=\"answer\" value=\"$i\" ";
     		if ($i == $answer) {$form_string.= "checked=\"checked\" ";}
-    		$form_string .= "/> ".$options[$i]."<br />\n";
+    		$form_string .= "/> ".$options[$i]."</label><br />\n";
     	}
     	return $form_string;
     }
@@ -370,12 +370,13 @@ class Question
     	// use autocomplete option instead of random string used in earlier version
     	// this is html 5 only (but works in earlier versions even though incorrect)
     	// pre-text
+    	$form_string .= "<label>";
     	$form_string .= $labels[0];
     	$form_string .= "<input type=\"text\" name=\"answer\" autocomplete=\"off\" value=\"";
     	// if not answered show default, otherwise show current
     	if ($answer != -1) {$form_string.= $answer;}
     	else {$form_string .= $labels[1];}
-    	$form_string .= "\" />";
+    	$form_string .= "\" /></label>";
     	// post-text
     	$form_string .= $labels[2];
     	return ($form_string);
@@ -392,13 +393,13 @@ class Question
     	$options = explode (",", $options);
     	for ($i=0; $i<count($options); $i++)
     	{
-    		$form_string .= "<input type=\"checkbox\" name=\"answer-$i\" ";
+    		$form_string .= "<label><input type=\"checkbox\" name=\"answer-$i\" ";
     		// make int into a string so that it can be used in strpos search
     		$i_string = ''.$i;
     		// if number is in the answer already
     		// use === type comparison as 0 is the first character
     		if (strpos ($answer, $i_string)!==false) {$form_string.= "checked=\"checked\" ";}
-    		$form_string .= "/> ".$options[$i]."<br />\n";
+    		$form_string .= "/> ".$options[$i]."</label><br />\n";
     	}
     	return $form_string;
     }

@@ -306,6 +306,7 @@ class Question
 			default:	// unknown question - this is a warning level - don't break, but 
 							$err =  Errors::getInstance();
     						$err->errorEvent(WARNING_QUESTION, "Warning, unknown question type for $this->questionid");
+    						break;
     	}
     	return $formatted;
     }

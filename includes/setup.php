@@ -49,7 +49,7 @@ else {$app_dir = dirname(__FILE__);}
 $include_dir = $app_dir."/";
 
 // we now drop the include from the app_dir
-$app_dir = substr ($app_dir, 0, strrpos ($app_dir, '/') );
+$app_dir = dirname($app_dir);
 
 if ($debug) {print "Loading css\n";}
 include ($include_dir."css.php");			// constants for css tags

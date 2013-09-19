@@ -25,7 +25,7 @@ define ("ADMIN_DIR", "admin");
 if (defined('__DIR__')) {$app_dir = __DIR__;}
 else {$app_dir = dirname(__FILE__);}
 // strip the admin part of the directory
-$app_dir = preg_replace ("#/".ADMIN_DIR."/?$#", "", $app_dir);
+$app_dir = dirname($app_dir);
 // loading setup.php will fail if this is initial install
 if (!isset($status) || $status != 'install') {require_once($app_dir."/includes/setup.php");}
 
